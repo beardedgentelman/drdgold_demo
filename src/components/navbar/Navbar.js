@@ -2,7 +2,7 @@ import NavbarLink from '../navbarLink/NavbarLink'
 
 import './navbar.css'
 
-const Navbar = props => {
+const Navbar = () => {
   return (
     <nav className='header__nav'>
       <ul className='nav__list'>
