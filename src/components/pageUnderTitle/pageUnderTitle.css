@@ -1,0 +1,6 @@
+.page__under-title__text {
+  font-size: 14px;
+  opacity: 0.8;
+  color: var(--grey-color);
+  margin-bottom: 20px;
+}

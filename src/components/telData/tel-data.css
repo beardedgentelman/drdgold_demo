@@ -1,0 +1,17 @@
+.tel-data_img {
+  width: 100%;
+}
+
+.data-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.data-wrapper img {
+  width: 300px;
+}
+
+.res_data p{
+  line-height: 2;
+}

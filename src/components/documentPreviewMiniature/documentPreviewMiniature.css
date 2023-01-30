@@ -1,0 +1,24 @@
+.document_wrapper {
+  display: flex;
+  max-width: 260px;
+  padding: .6rem;
+  border-radius: 6px;
+}
+
+.document_wrapper:hover {
+  background-color: var(--grey-color);
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.document-info {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.document-text {
+  font-size: 12px;
+}

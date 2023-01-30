@@ -1,0 +1,96 @@
+.custom-select-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 12px 7px 19px;
+  min-width: 167px;
+  text-align: center;
+  position: relative;
+  background: #CECECE;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.selected-text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #4D4D4D;
+  text-transform: uppercase;
+}
+
+.selected-text::after {
+  content: "";
+  display: block;
+  border: 7px solid transparent;
+  border-color: #4C4C4C transparent transparent transparent;
+  transform: translateY(40%);
+  transition: all .3s;
+  -webkit-transform: translateY(40%);
+  -moz-transform: translateY(40%);
+  -ms-transform: translateY(40%);
+  -o-transform: translateY(40%);
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+}
+
+.selected-text.active::after {
+  border-color: transparent transparent #4C4C4C transparent;
+  transform: translateY(-40%);
+  transition: all .3s;
+  -webkit-transform: translateY(-40%);
+  -moz-transform: translateY(-40%);
+  -ms-transform: translateY(-40%);
+  -o-transform: translateY(-40%);
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+}
+
+.select-options {
+  position: absolute;
+  min-width: 285px;
+  width: 100%;
+  top: calc(100% + 7px);
+  left: 0;
+  padding: 3px;
+  background-color: #eeeeee;
+  border-radius: 6px;
+  text-align: center;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.select-filter__wrapper {
+  padding: 7px;
+}
+
+.select-filter {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.custom-select-option {
+  list-style-type: none;
+  padding: 6px 20px;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.custom-select-option:hover {
+  background-color: var(--grey-color);
+  color: #ffffff;
+}

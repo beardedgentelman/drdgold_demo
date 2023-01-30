@@ -1,0 +1,5 @@
+export { default as EditProfileIcon } from './editProfileIcon'
+export { default as HelpIcon } from './helpIcon'
+export { default as LogoutIcon } from './logoutIcon'
+export { default as MyProfileIcon } from './myProfileIcon'
+export { default as SettingsIcon } from './settingsIcon'
