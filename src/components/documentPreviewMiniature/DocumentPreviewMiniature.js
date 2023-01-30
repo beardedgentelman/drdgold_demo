@@ -24,7 +24,7 @@ const DocumentPreviewMiniature = props => {
   return (
     <div className='document_wrapper' id={props.id} onClick={props.onClick}>
       <div className='document-img_wrapper'>
-        <img className='document-img' src={typeDoc(props.id)} alt={props.id + ' icon'} />
+        <img className='document-img' src={typeDoc(props.id) || props.src} alt={props.id + ' icon'} />
       </div>
       <div className='document-info'>
         <p className='document-text'>{props.one}</p>

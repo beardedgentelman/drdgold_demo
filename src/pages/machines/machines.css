@@ -1,0 +1,38 @@
+.machines__selects {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.machines__documents {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 50px;
+  margin-top: 80px;
+}
+
+.machines__documents .document-img_wrapper {
+  width: 116px;
+}
+
+.machine-modal__img-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.machine-modal__img:not(:last-child) {
+  margin-right: 30px;
+  box-shadow: (2px 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.machine-modal__desc {
+  margin: 30px 0;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  max-width: 690px;
+}
