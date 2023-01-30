@@ -7,6 +7,7 @@ export { default as DocumentPreviewMiniature } from './documentPreviewMiniature/
 export { default as HeaderUser } from './headerUser/HeaderUser'
 export { default as Logo } from './logo/Logo'
 export { default as Navbar } from './navbar/Navbar'
+export { default as NavbarLink } from './navbarLink/NavbarLink'
 export { default as PageTitle } from './pageTitle/PageTitle'
 export { default as PageUnderTitle } from './pageUnderTitle/PageUnderTitle'
 export { default as SelectOptionDropDown } from './selectOptionDropDown/SelectOptionDropDown'
