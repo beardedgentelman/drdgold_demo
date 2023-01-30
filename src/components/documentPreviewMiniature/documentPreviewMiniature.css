@@ -1,6 +1,6 @@
 .document_wrapper {
   display: flex;
-  max-width: 260px;
+  width: 260px;
   padding: .6rem;
   border-radius: 6px;
 }
@@ -9,6 +9,10 @@
   background-color: var(--grey-color);
   color: var(--white-color);
   cursor: pointer;
+}
+
+.document-img_wrapper {
+  width: 76px;
 }
 
 .document-info {
