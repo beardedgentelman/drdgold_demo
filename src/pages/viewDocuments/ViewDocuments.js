@@ -1,12 +1,19 @@
 import { useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Popup from 'reactjs-popup'
-import classNames from 'classnames'
+import { activeNav } from 'helpers/activeNav/activeNav'
 import options from 'helpers/selectOptions/SelectOptions'
 
-import { Audit, Btn, Document, DocumentPreviewMiniature, SelectOptionDropDown, TelData } from 'components'
-
-import { activeNav } from '../../helpers/activeNav/activeNav'
+import {
+  Audit,
+  Btn,
+  Document,
+  DocumentPreviewMiniature,
+  Modal,
+  Pagination,
+  PaginationPageNum,
+  SelectOptionDropDown,
+  TelData
+} from 'components'
 
 import './viewDocuments.css'
 
@@ -22,6 +29,7 @@ function ViewDocuments() {
   const [doc, setDoc] = useState(true)
   const [audits, setAudits] = useState(false)
   const [telData, setTelData] = useState(false)
+
   const closeModal = () => setOpenModal(false)
 
   const randomVal = () => somId[Math.floor(Math.random() * somId.length)]
@@ -51,7 +59,7 @@ function ViewDocuments() {
       }
       docMinis.push(
         <DocumentPreviewMiniature
-          key={i}
+          key={currentDoc.id + '-' + i + '-' + currentDoc.one + '-' + currentDoc.two}
           id={currentDoc.id}
           one={currentDoc.one}
           two={currentDoc.two}
@@ -74,13 +82,9 @@ function ViewDocuments() {
     const elements = []
     for (let i = 1; i <= totalPages; i++) {
       elements.push(
-        <div
-          key={i}
-          className={classNames('view-documentation__page-number', page === i ? 'active' : '')}
-          onClick={() => setPage(i)}
-        >
+        <PaginationPageNum key={i} active={page === i} onClick={() => setPage(i)}>
           {i}
-        </div>
+        </PaginationPageNum>
       )
     }
     return elements
@@ -97,15 +101,10 @@ function ViewDocuments() {
         <Btn onClick={() => setReset(!reset)}>Reset</Btn>
       </div>
       <div className='view-documentation__documents'>{documents}</div>
-      <Popup open={openModal} lockScroll closeOnDocumentClick onClose={closeModal}>
-        {() => {
-          if (!openModal) {
-            setDoc(false)
-            setAudits(false)
-            setTelData(false)
-          }
-        }}
-        <div className='modal'>
+      <Modal
+        openModal={openModal}
+        closeModal={closeModal}
+        modalChildren={
           <DocumentPreviewMiniature
             id={selectedDoc.id}
             one={selectedDoc.one}
@@ -115,77 +114,67 @@ function ViewDocuments() {
             five={selectedDoc.five}
             onClick={event => console.log(event)}
           />
-          <div className='view-documentation__docinfo'>
-            <nav>
-              <ul>
-                <li className='modal_nav'>
-                  <NavLink
-                    className={doc ? 'nav__list-item__link active' : activeNav}
-                    to='/document'
-                    onClick={e => {
-                      e.preventDefault()
-                      setDoc(true)
-                      setAudits(false)
-                      setTelData(false)
-                    }}
-                  >
-                    Document
-                  </NavLink>
-                </li>
-                <li className='modal_nav'>
-                  <NavLink
-                    className={audits ? 'nav__list-item__link active' : activeNav}
-                    to='/document'
-                    onClick={e => {
-                      e.preventDefault()
-                      setDoc(false)
-                      setAudits(true)
-                      setTelData(false)
-                    }}
-                  >
-                    Audits
-                  </NavLink>
-                </li>
-                <li className='modal_nav'>
-                  <NavLink
-                    className={telData ? 'nav__list-item__link active' : activeNav}
-                    to='/document'
-                    onClick={e => {
-                      e.preventDefault()
-                      setDoc(false)
-                      setAudits(false)
-                      setTelData(true)
-                    }}
-                  >
-                    Telematics data
-                  </NavLink>
-                </li>
-              </ul>
-            </nav>
-            <div className='modal_data'>{doc ? <Document /> : audits ? <Audit /> : telData ? <TelData /> : null}</div>
-          </div>
-        </div>
-        <Btn className='close_modal' onClick={closeModal}>
-          Close
-        </Btn>
-      </Popup>
-      <div className='view-documentation__pagination'>
-        <button
-          className={classNames('view-documents__btn', 'prev')}
-          onClick={() => setPage(page - 1)}
-          disabled={page === 1}
-        >
-          &#171; prev
-        </button>
+        }
+        navChildrenFirst={
+          <NavLink
+            className={doc ? 'nav__list-item__link active' : activeNav}
+            to='/document'
+            onClick={e => {
+              e.preventDefault()
+              setDoc(true)
+              setAudits(false)
+              setTelData(false)
+            }}
+          >
+            Document
+          </NavLink>
+        }
+        navChildrenSecond={
+          <NavLink
+            className={audits ? 'nav__list-item__link active' : activeNav}
+            to='/document'
+            onClick={e => {
+              e.preventDefault()
+              setDoc(false)
+              setAudits(true)
+              setTelData(false)
+            }}
+          >
+            Audits
+          </NavLink>
+        }
+        navChildrenThird={
+          <NavLink
+            className={telData ? 'nav__list-item__link active' : activeNav}
+            to='/document'
+            onClick={e => {
+              e.preventDefault()
+              setDoc(false)
+              setAudits(false)
+              setTelData(true)
+            }}
+          >
+            Telematics data
+          </NavLink>
+        }
+        modalChildrenData={doc ? <Document /> : audits ? <Audit /> : telData ? <TelData /> : null}
+      >
+        {() => {
+          if (!openModal) {
+            setDoc(false)
+            setAudits(false)
+            setTelData(false)
+          }
+        }}
+      </Modal>
+      <Pagination
+        onClickPrev={() => setPage(page - 1)}
+        onClickNext={() => setPage(page + 1)}
+        disabledPrev={page === 1}
+        disabledNext={page * PAGE_LIMIT >= 200}
+      >
         {renderPageNumbers()}
-        <button
-          className={classNames('view-documents__btn', 'next')}
-          onClick={() => setPage(page + 1)}
-          disabled={page * PAGE_LIMIT >= 200}
-        >
-          Next &#187;
-        </button>
-      </div>
+      </Pagination>
     </>
   )
 }

@@ -1,0 +1,20 @@
+.anomalies__title {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.anomalies__selects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.anomalies__items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  row-gap: 12px;
+  margin-top: 46px;
+}

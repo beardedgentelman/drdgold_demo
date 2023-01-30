@@ -1,0 +1,18 @@
+.anomaly {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px;
+  width: 360px;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.anomaly:hover {
+  cursor: pointer;
+  background-color: var(--grey-color);
+  color: var(--white-color);
+}
