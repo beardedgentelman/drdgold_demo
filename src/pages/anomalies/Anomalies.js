@@ -3,7 +3,17 @@ import { NavLink } from 'react-router-dom'
 import { activeNav } from 'helpers/activeNav/activeNav'
 import options from 'helpers/selectOptions/SelectOptions'
 
-import { AnomaliesItem, Btn, Modal, PageTitle, Pagination, PaginationPageNum, SelectOptionDropDown } from 'components'
+import {
+  AnomaliesItem,
+  Audit,
+  Btn,
+  Document,
+  Modal,
+  PageTitle,
+  Pagination,
+  PaginationPageNum,
+  SelectOptionDropDown
+} from 'components'
 
 import './anomalies.css'
 
@@ -95,13 +105,13 @@ function Anomalies() {
             to='/document'
             onClick={e => {
               e.preventDefault()
-              setAudits(true)
+              setAudits(!audits)
             }}
           >
             Audits
           </NavLink>
         }
-        // modalChildrenData={}
+        modalChildrenData={!audits ? <Document /> : <Audit />}
       >
         {() => {
           if (!openModal) {
@@ -113,7 +123,7 @@ function Anomalies() {
         onClickPrev={() => setPage(page - 1)}
         onClickNext={() => setPage(page + 1)}
         disabledPrev={page === 1}
-        disabledNext={page * PAGE_LIMIT >= 200}
+        disabledNext={page * PAGE_LIMIT >= 80}
       >
         {renderPageNumbers()}
       </Pagination>
