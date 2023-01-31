@@ -13,7 +13,7 @@ function Verified() {
       <p className='verified__text'>
         Documents have been uploaded successfully, check your registered email for confirmation.
       </p>
-      <Link to='/'>
+      <Link to='/dashboard'>
         <Btn>Return home</Btn>
       </Link>
     </div>
