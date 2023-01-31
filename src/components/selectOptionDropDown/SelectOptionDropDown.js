@@ -2,10 +2,15 @@ import { useEffect, useState } from 'react'
 
 import './select_option_drop_down.css'
 
-const SelectOptionDropDown = ({ defaultText, optionsList, reset }) => {
+const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => {
   const [defaultSelectText, setDefaultSelectText] = useState('')
   const [showOptionList, setShowOptionList] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
+  const [isCalendar, setIsCalendar] = useState('')
+
+  useEffect(() => {
+    setIsCalendar(calendar)
+  }, [calendar])
 
   useEffect(() => {
     setDefaultSelectText(defaultText)
@@ -67,9 +72,22 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset }) => {
     }
   }, [showOptionList])
 
+  console.log(isCalendar)
+
   return (
     <div className='custom-select-container'>
-      <div className={showOptionList ? 'selected-text active' : 'selected-text'} onClick={handleListDisplay}>
+      <div
+        className={
+          showOptionList
+            ? isCalendar === '_calendar'
+              ? 'selected-text_calendar'
+              : 'selected-text active'
+            : isCalendar === '_calendar'
+            ? 'selected-text_calendar'
+            : 'selected-text'
+        }
+        onClick={handleListDisplay}
+      >
         <span>{defaultSelectText}</span>
       </div>
       {showOptionList && (

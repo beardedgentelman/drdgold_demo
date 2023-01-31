@@ -20,6 +20,12 @@ const options = [
     { id: 13, name: 'John Paul' },
     { id: 14, name: 'David Fincher' },
     { id: 15, name: 'Willie Engelbrecht' }
+  ],
+  [
+    { id: 17, name: 'Option 17' },
+    { id: 18, name: 'Option 18' },
+    { id: 19, name: 'Option 19' },
+    { id: 20, name: 'Option 20' }
   ]
 ]
 
