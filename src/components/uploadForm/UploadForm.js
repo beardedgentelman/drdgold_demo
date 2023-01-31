@@ -129,7 +129,7 @@ function UploadForm(props) {
             ) : (
               <>
                 <p className='sector__title'>Select a file or drag and drop here</p>
-                <p className='sector__formats'>JPG, PNG or PDF, file size no more than 10MB</p>
+                <p className='sector__formats'>Invoice, P.O, Quote or Timesheet, file size no more than 10MB</p>
               </>
             )}
             <input

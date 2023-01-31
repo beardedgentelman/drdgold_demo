@@ -29,6 +29,7 @@ function ViewDocuments() {
   const [doc, setDoc] = useState(true)
   const [audits, setAudits] = useState(false)
   const [telData, setTelData] = useState(false)
+  const [dateFocus, setDateFocus] = useState(false)
 
   const closeModal = () => setOpenModal(false)
 
@@ -97,7 +98,13 @@ function ViewDocuments() {
         <SelectOptionDropDown defaultText='Company' optionsList={options[1]} reset={reset} />
         <SelectOptionDropDown defaultText='Machine' optionsList={options[2]} reset={reset} />
         <SelectOptionDropDown defaultText='Foreman' optionsList={options[3]} reset={reset} />
-        <SelectOptionDropDown defaultText='Upload Date' optionsList={options[4]} reset={reset} />
+        <input
+          placeholder='Upload Date'
+          className='input-date'
+          type={dateFocus ? 'month' : 'text'}
+          onFocus={() => setDateFocus(false)}
+        />
+        {/* Input type date */}
         <Btn onClick={() => setReset(!reset)}>Reset</Btn>
       </div>
       <div className='view-documentation__documents'>{documents}</div>
