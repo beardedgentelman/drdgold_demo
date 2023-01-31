@@ -7,7 +7,6 @@ function Main() {
   return (
     <main className='main main__container'>
       <Routes>
-        <Route path='/' element={<HomePage />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/viewDocuments' element={<ViewDocuments />} />
         <Route path='/upload' element={<Upload />} />

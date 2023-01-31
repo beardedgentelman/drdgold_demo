@@ -7,7 +7,7 @@ import './header.css'
 const headerContent = () => {
   return (
     <section className='header__content'>
-      <Link to='/'>
+      <Link to='/dashboard'>
         <Logo />
       </Link>
       <Navbar />
