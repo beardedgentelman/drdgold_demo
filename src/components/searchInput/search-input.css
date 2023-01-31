@@ -9,7 +9,7 @@ input[type='search']::-webkit-search-results-decoration {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 7px 12px 7px 19px;
+  padding: 7px 10px;
   min-width: 290px;
   text-align: start;
   position: relative;

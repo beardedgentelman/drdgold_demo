@@ -9,8 +9,18 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 50px;
+  gap: 48px 50px;
   margin-top: 80px;
+}
+
+.machines__documents .document_wrapper {
+  width: 365px;
+  font-weight: 500;
+  padding: 0;
+}
+
+.machines__documents .document-text {
+  font-size: 20px;
 }
 
 .machines__documents .document-img_wrapper {
@@ -35,4 +45,5 @@
   font-size: 18px;
   line-height: 21px;
   max-width: 690px;
+  color: #4D4D4D;
 }

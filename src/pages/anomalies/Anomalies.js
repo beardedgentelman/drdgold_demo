@@ -32,6 +32,7 @@ function Anomalies() {
   const [reset, setReset] = useState(false)
   const [page, setPage] = useState(1)
   const [selectedItem, setSelectedItem] = useState({})
+  const [doc, setDoc] = useState(true)
   const [audits, setAudits] = useState(false)
   const [openModal, setOpenModal] = useState(false)
   const PAGE_LIMIT = 32
@@ -99,13 +100,27 @@ function Anomalies() {
             Some Text
           </AnomaliesItem>
         }
+        navChildrenFirst={
+          <NavLink
+            className={doc ? 'nav__list-item__link active' : activeNav}
+            to='/document'
+            onClick={e => {
+              e.preventDefault()
+              setDoc(true)
+              setAudits(false)
+            }}
+          >
+            Document
+          </NavLink>
+        }
         navChildrenSecond={
           <NavLink
             className={audits ? 'nav__list-item__link active' : activeNav}
             to='/document'
             onClick={e => {
               e.preventDefault()
-              setAudits(!audits)
+              setDoc(false)
+              setAudits(true)
             }}
           >
             Audits
@@ -115,6 +130,7 @@ function Anomalies() {
       >
         {() => {
           if (!openModal) {
+            setDoc(false)
             setAudits(false)
           }
         }}

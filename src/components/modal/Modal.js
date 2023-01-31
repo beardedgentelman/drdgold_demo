@@ -15,6 +15,7 @@ const Modal = props => {
       onClose={props.closeModal}
     >
       <div className={classNames('modal', props.classNameModal)}>
+        {props.modalChildren}
         {props.children}
         <div className={classNames('info', props.classNameInfo)}>
           <nav>

@@ -6,8 +6,6 @@
 }
 
 .document_wrapper:hover {
-  background-color: var(--grey-color);
-  color: var(--white-color);
   cursor: pointer;
 }
 

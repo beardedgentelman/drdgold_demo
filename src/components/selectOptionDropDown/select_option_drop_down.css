@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 7px 12px 7px 19px;
+  padding: 7px 10px;
   min-width: 167px;
   text-align: center;
   position: relative;
@@ -16,23 +16,25 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
   color: #4D4D4D;
   text-transform: uppercase;
 }
 
+.selected-text span {
+  flex: 1;
+}
+
 .selected-text::after {
   content: "";
-  display: block;
   border: 7px solid transparent;
   border-color: #4C4C4C transparent transparent transparent;
-  transform: translateY(40%);
+  transform: translateY(25%);
+  -webkit-transform: translateY(25%);
+  -moz-transform: translateY(25%);
+  -ms-transform: translateY(25%);
+  -o-transform: translateY(25%);
   transition: all .3s;
-  -webkit-transform: translateY(40%);
-  -moz-transform: translateY(40%);
-  -ms-transform: translateY(40%);
-  -o-transform: translateY(40%);
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
   -ms-transition: all .3s;
@@ -41,12 +43,12 @@
 
 .selected-text.active::after {
   border-color: transparent transparent #4C4C4C transparent;
-  transform: translateY(-40%);
+  transform: translateY(-25%);
+  -webkit-transform: translateY(-25%);
+  -moz-transform: translateY(-25%);
+  -ms-transform: translateY(-25%);
+  -o-transform: translateY(-25%);
   transition: all .3s;
-  -webkit-transform: translateY(-40%);
-  -moz-transform: translateY(-40%);
-  -ms-transform: translateY(-40%);
-  -o-transform: translateY(-40%);
   -webkit-transition: all .3s;
   -moz-transition: all .3s;
   -ms-transition: all .3s;
@@ -54,6 +56,7 @@
 }
 
 .select-options {
+  list-style: disc;
   position: absolute;
   min-width: 285px;
   width: 100%;
@@ -85,10 +88,43 @@
 }
 
 .custom-select-option {
-  list-style-type: none;
-  padding: 6px 20px;
+  align-items: center;
+  gap: 7px;
+  text-align: left;
+  list-style: disc;
+  padding: 12px 16px;
   background-color: #ffffff;
+  color: #212529;
+  font-size: 12px;
   cursor: pointer;
+}
+
+.custom-select-option::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.custom-select-option:nth-child(2):before {
+  background-color: #198754;
+}
+
+.custom-select-option:nth-child(3):before {
+  background-color: #0D6EFD;
+}
+
+.custom-select-option:nth-child(4):before {
+  background-color: #DC3545;
+}
+
+.custom-select-option:nth-child(5):before {
+  background-color: #0DCAF0;
 }
 
 .custom-select-option:hover {

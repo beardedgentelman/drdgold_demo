@@ -62,7 +62,7 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset }) => {
     const options = document.querySelectorAll('.custom-select-option')
     if (showOptionList) {
       options.forEach(option => {
-        option.style.display = 'block'
+        option.style.display = 'flex'
       })
     }
   }, [showOptionList])
@@ -70,7 +70,7 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset }) => {
   return (
     <div className='custom-select-container'>
       <div className={showOptionList ? 'selected-text active' : 'selected-text'} onClick={handleListDisplay}>
-        {defaultSelectText}
+        <span>{defaultSelectText}</span>
       </div>
       {showOptionList && (
         <ul className='select-options'>
@@ -84,7 +84,7 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset }) => {
               key={option.id}
               onClick={handleOptionClick}
               style={{
-                display: option.name.toLowerCase().indexOf(searchTerm) !== -1 ? 'block' : 'none'
+                display: option.name.toLowerCase().indexOf(searchTerm) !== -1 ? 'flex' : 'none'
               }}
             >
               {option.name}
