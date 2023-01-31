@@ -55,8 +55,8 @@ const Upload = props => {
     <>
       {!verified ? (
         <>
-          <PageTitle>Lorem Ipsum is simply dummy text</PageTitle>
-          <PageUnderTitle>Select relevant documents to complete your kyc</PageUnderTitle>
+          <PageTitle>Upload timesheet document</PageTitle>
+          <PageUnderTitle>You can upload scanned copy of the timesheet for approval</PageUnderTitle>
           {!sending ? (
             <UploadForm submit={handleFormData} />
           ) : (
