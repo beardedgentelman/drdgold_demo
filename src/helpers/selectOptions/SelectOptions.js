@@ -22,10 +22,9 @@ const options = [
     { id: 15, name: 'Willie Engelbrecht' }
   ],
   [
-    { id: 17, name: 'Option 17' },
-    { id: 18, name: 'Option 18' },
-    { id: 19, name: 'Option 19' },
-    { id: 20, name: 'Option 20' }
+    { id: 17, name: '6x4' },
+    { id: 18, name: '20 Ton' },
+    { id: 19, name: 'D6H' }
   ]
 ]
 

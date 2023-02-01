@@ -81,8 +81,8 @@ function Machines() {
     <>
       <div className='machines__selects'>
         <SearchInput placeholder='SEARCH FOR...' reset={reset} />
-        <SelectOptionDropDown defaultText='Type' optionsList={options[0]} reset={reset} />
-        <SelectOptionDropDown defaultText='Sub - Type' optionsList={options[1]} reset={reset} />
+        <SelectOptionDropDown defaultText='Type' optionsList={options[2]} reset={reset} />
+        <SelectOptionDropDown defaultText='Sub - Type' optionsList={options[4]} reset={reset} />
         <Btn onClick={() => setReset(!reset)}>Reset</Btn>
       </div>
       <div className='machines__documents'>{documents}</div>

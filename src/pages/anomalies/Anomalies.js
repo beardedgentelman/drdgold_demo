@@ -82,9 +82,8 @@ function Anomalies() {
       <PageTitle className='anomalies__title'>{svg} List of Anomalies</PageTitle>
       <div className='anomalies__selects'>
         <SelectOptionDropDown defaultText='SITE' optionsList={options[4]} reset={reset} />
-        <SelectOptionDropDown defaultText='DOCUMENT TYPE' optionsList={options[0]} reset={reset} />
-        <SelectOptionDropDown defaultText='DATE' optionsList={options[4]} reset={reset} />
         <SelectOptionDropDown defaultText='STATUS' optionsList={options[4]} reset={reset} />
+        <SelectOptionDropDown calendar='_calendar' defaultText='Upload Date' optionsList={options[4]} reset={reset} />
         <Btn onClick={() => setReset(!reset)}>Reset</Btn>
       </div>
       <div className='anomalies__items'>{items}</div>

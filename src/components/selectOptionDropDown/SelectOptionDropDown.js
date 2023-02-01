@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Calendar } from 'react-calendar'
+import classNames from 'classnames'
 
+import 'react-calendar/dist/Calendar.css'
 import './select_option_drop_down.css'
 
 const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => {
@@ -7,6 +10,7 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
   const [showOptionList, setShowOptionList] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [isCalendar, setIsCalendar] = useState('')
+  const [date, setDate] = useState(new Date())
 
   useEffect(() => {
     setIsCalendar(calendar)
@@ -35,6 +39,7 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
 
   const handleClickOutside = e => {
     if (
+      !e.target.closest('.calendar') &&
       !e.target.classList.contains('custom-select-option') &&
       !e.target.classList.contains('selected-text') &&
       !e.target.classList.contains('select-filter')
@@ -42,6 +47,8 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
       setShowOptionList(false)
     }
   }
+
+  console.log(showOptionList)
 
   const handleListDisplay = () => {
     setShowOptionList(prevShowOptionList => !prevShowOptionList)
@@ -72,44 +79,47 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
     }
   }, [showOptionList])
 
-  console.log(isCalendar)
-
   return (
-    <div className='custom-select-container'>
-      <div
-        className={
-          showOptionList
-            ? isCalendar === '_calendar'
-              ? 'selected-text_calendar'
-              : 'selected-text active'
-            : isCalendar === '_calendar'
-            ? 'selected-text_calendar'
-            : 'selected-text'
-        }
-        onClick={handleListDisplay}
-      >
-        <span>{defaultSelectText}</span>
-      </div>
-      {showOptionList && (
-        <ul className='select-options'>
-          <div className='select-filter__wrapper'>
-            <input className='select-filter' type='text' placeholder='Type to filter' onChange={handleSearch} />
-          </div>
-          {optionsList.map(option => (
-            <li
-              className='custom-select-option'
-              data-name={option.name}
-              key={option.id}
-              onClick={handleOptionClick}
-              style={{
-                display: option.name.toLowerCase().indexOf(searchTerm) !== -1 ? 'flex' : 'none'
-              }}
-            >
-              {option.name}
-            </li>
-          ))}
-        </ul>
+    <div
+      className={classNames(
+        showOptionList
+          ? isCalendar === '_calendar'
+            ? 'custom-select-container_calendar'
+            : 'custom-select-container active'
+          : isCalendar === '_calendar'
+          ? 'custom-select-container_calendar'
+          : 'custom-select-container'
       )}
+    >
+      <div className='selected-text' onClick={handleListDisplay}>
+        {defaultSelectText}
+      </div>
+
+      {showOptionList &&
+        (isCalendar === '_calendar' ? (
+          <div className='calendar'>
+            <Calendar value={date} onChange={setDate} defaultView='year' />
+          </div>
+        ) : (
+          <ul className='select-options'>
+            <div className='select-filter__wrapper'>
+              <input className='select-filter' type='text' placeholder='Type to filter' onChange={handleSearch} />
+            </div>
+            {optionsList.map(option => (
+              <li
+                className='custom-select-option'
+                data-name={option.name}
+                key={option.id}
+                onClick={handleOptionClick}
+                style={{
+                  display: option.name.toLowerCase().indexOf(searchTerm) !== -1 ? 'flex' : 'none'
+                }}
+              >
+                {option.name}
+              </li>
+            ))}
+          </ul>
+        ))}
     </div>
   )
 }
