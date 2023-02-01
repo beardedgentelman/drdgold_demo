@@ -12,6 +12,18 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
   const [isCalendar, setIsCalendar] = useState('')
   const [date, setDate] = useState(new Date())
   const [view, setView] = useState('year')
+  const [datePicked, setDatePicked] = useState(false)
+  const [selectedMonth, setSelectedMonth] = useState(dateText())
+
+  function dateText() {
+    if (defaultText.toLowerCase().includes('date')) {
+      return defaultText
+    } else {
+      return ''
+    }
+  }
+
+  const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Oct', 'Nov', 'Dec']
 
   const onClickMonth = () => {
     setView('year')
@@ -27,6 +39,7 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
 
   useEffect(() => {
     if (reset) {
+      setDatePicked(false)
       setDefaultSelectText(defaultText)
       setSearchTerm('')
     }
@@ -49,10 +62,6 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
       !e.target.classList.contains('selected-text') &&
       !e.target.classList.contains('select-filter')
     ) {
-      setShowOptionList(false)
-    }
-
-    if (e.target.classList.contains('react-calendar__viewContainer')) {
       setShowOptionList(false)
     }
   }
@@ -99,11 +108,7 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
       )}
     >
       <div className='selected-text' onClick={handleListDisplay}>
-        {isCalendar === '_calendar'
-          ? date.length > 0
-            ? date[0].toDateString()
-            : defaultSelectText
-          : defaultSelectText}
+        {isCalendar === '_calendar' ? (datePicked ? months[selectedMonth] : dateText()) : defaultSelectText}
       </div>
 
       {showOptionList &&
@@ -111,10 +116,13 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
           <div className='calendar'>
             <Calendar
               view={view}
-              onClickMonth={onClickMonth}
               onChange={setDate}
               value={date}
-              onClick={date => alert('New date is: ', date)}
+              onClickMonth={month => {
+                setDatePicked(true)
+                setSelectedMonth(month.getMonth())
+                onClickMonth()
+              }}
               defaultView='year'
             />
           </div>
