@@ -11,6 +11,11 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
   const [searchTerm, setSearchTerm] = useState('')
   const [isCalendar, setIsCalendar] = useState('')
   const [date, setDate] = useState(new Date())
+  const [view, setView] = useState('year')
+
+  const onClickMonth = () => {
+    setView('year')
+  }
 
   useEffect(() => {
     setIsCalendar(calendar)
@@ -46,9 +51,11 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
     ) {
       setShowOptionList(false)
     }
-  }
 
-  console.log(showOptionList)
+    if (e.target.classList.contains('react-calendar__viewContainer')) {
+      setShowOptionList(false)
+    }
+  }
 
   const handleListDisplay = () => {
     setShowOptionList(prevShowOptionList => !prevShowOptionList)
@@ -92,13 +99,24 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
       )}
     >
       <div className='selected-text' onClick={handleListDisplay}>
-        {defaultSelectText}
+        {isCalendar === '_calendar'
+          ? date.length > 0
+            ? date[0].toDateString()
+            : defaultSelectText
+          : defaultSelectText}
       </div>
 
       {showOptionList &&
         (isCalendar === '_calendar' ? (
           <div className='calendar'>
-            <Calendar value={date} onChange={setDate} defaultView='year' />
+            <Calendar
+              view={view}
+              onClickMonth={onClickMonth}
+              onChange={setDate}
+              value={date}
+              onClick={date => alert('New date is: ', date)}
+              defaultView='year'
+            />
           </div>
         ) : (
           <ul className='select-options'>

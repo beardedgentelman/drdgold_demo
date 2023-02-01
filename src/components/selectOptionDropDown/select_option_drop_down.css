@@ -14,6 +14,7 @@
   position: relative;
   width: 100%;
   height: 33px;
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,6 +89,7 @@
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
   -o-border-radius: 6px;
+  z-index: 2;
 }
 
 .calendar {
@@ -154,3 +156,5 @@
   background-color: var(--grey-color);
   color: #ffffff;
 }
+
+/* ----------Calendar----------- */
