@@ -9,10 +9,8 @@ function Verified() {
   return (
     <div className='verified__container'>
       <img src={verifiedIcon} alt='verified' />
-      <h5 className='verified__title'>Verified!</h5>
-      <p className='verified__text'>
-        Documents have been uploaded successfully, check your registered email for confirmation.
-      </p>
+      <h5 className='verified__title'>Uploaded!</h5>
+      <p className='verified__text'>Timesheet has been uploaded successfully.</p>
       <Link to='/dashboard'>
         <Btn>Return home</Btn>
       </Link>
