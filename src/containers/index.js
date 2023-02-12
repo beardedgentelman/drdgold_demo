@@ -1,2 +1,6 @@
-export { default as Header } from './header/Header'
-export { default as Main } from './main/Main'
+export { default as CFOContainer } from './CFOContainer/CFOContainer'
+export { default as HeaderCFO } from './header-cfo/HeaderCFO'
+export { default as HeaderUser } from './header-user/HeaderUser'
+export { default as MainCFO } from './main-cfo/MainCFO'
+export { default as MainUser } from './main-user/MainUser'
+export { default as UserContainer } from './UserContainer/UserContainer'

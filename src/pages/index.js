@@ -1,4 +1,5 @@
 export { default as Anomalies } from './anomalies/Anomalies'
+export { default as Contracts } from './contracts/Contracts'
 export { default as Dashboard } from './dashboard/Dashboard'
 export { default as HomePage } from './homePage/HomePage'
 export { default as Machines } from './machines/Machines'

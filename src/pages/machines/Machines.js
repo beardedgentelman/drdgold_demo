@@ -5,7 +5,7 @@ import {
   Btn,
   DocumentPreviewMiniature,
   Modal,
-  Pagination,
+  PaginationCustom,
   PaginationPageNum,
   SearchInput,
   SelectOptionDropDown
@@ -44,8 +44,7 @@ function Machines() {
       const currentDoc = {
         one: someDocInfo.one,
         two: someDocInfo.two,
-        three:
-          'Description of the machine... Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+        three: someDocInfo.three
       }
       docMinis.push(
         <DocumentPreviewMiniature
@@ -96,14 +95,14 @@ function Machines() {
         </div>
         <p className='machine-modal__desc'>{selectedDoc.three}</p>
       </Modal>
-      <Pagination
+      <PaginationCustom
         onClickPrev={() => setPage(page - 1)}
         onClickNext={() => setPage(page + 1)}
         disabledPrev={page === 1}
         disabledNext={page * PAGE_LIMIT >= 20}
       >
         {renderPageNumbers()}
-      </Pagination>
+      </PaginationCustom>
     </>
   )
 }

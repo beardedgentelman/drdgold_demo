@@ -1,0 +1,35 @@
+.divTable {
+  display: table;
+  width: 545px;
+}
+
+.divTableHeading {
+  background-color: #E9ECEF;
+  display: table-header-group;
+}
+
+.divTableRow,
+.divTableHeadingRow {
+  display: table-row;
+  width: 100%;
+}
+
+.divTableCell,
+.divTableHead {
+  border: none;
+  display: table-cell;
+  padding: 17px 12px;
+  text-align: center;
+}
+
+.divTableBody {
+  display: table-row-group;
+}
+
+.divTableCell {
+  background-color: transparent;
+}
+
+.viewCell {
+  cursor: pointer;
+}

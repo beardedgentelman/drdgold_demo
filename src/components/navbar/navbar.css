@@ -11,4 +11,6 @@
   margin-inline: auto;
 }
 
-
+.cfo__nav {
+  width: min(100%, 744px);
+}

@@ -9,7 +9,7 @@ import {
   Document,
   DocumentPreviewMiniature,
   Modal,
-  Pagination,
+  PaginationCustom,
   PaginationPageNum,
   SelectOptionDropDown,
   TelData
@@ -167,14 +167,14 @@ function ViewDocuments() {
           }
         }}
       </Modal>
-      <Pagination
+      <PaginationCustom
         onClickPrev={() => setPage(page - 1)}
         onClickNext={() => setPage(page + 1)}
         disabledPrev={page === 1}
         disabledNext={page * PAGE_LIMIT >= 200}
       >
         {renderPageNumbers()}
-      </Pagination>
+      </PaginationCustom>
     </>
   )
 }

@@ -10,7 +10,7 @@ import {
   Document,
   Modal,
   PageTitle,
-  Pagination,
+  PaginationCustom,
   PaginationPageNum,
   SelectOptionDropDown
 } from 'components'
@@ -135,14 +135,14 @@ function Anomalies() {
           }
         }}
       </Modal>
-      <Pagination
+      <PaginationCustom
         onClickPrev={() => setPage(page - 1)}
         onClickNext={() => setPage(page + 1)}
         disabledPrev={page === 1}
         disabledNext={page * PAGE_LIMIT >= 80}
       >
         {renderPageNumbers()}
-      </Pagination>
+      </PaginationCustom>
     </>
   )
 }
