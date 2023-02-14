@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { activeNav } from 'helpers/activeNav/activeNav'
 import options from 'helpers/selectOptions/SelectOptions'
@@ -86,6 +86,12 @@ const Contracts = () => {
     return docMinis.slice((page - 1) * PAGE_LIMIT, page * PAGE_LIMIT)
   }, [someDocInfo, page])
 
+  useEffect(() => {
+    if (!openModal) {
+      setHistory(false)
+    }
+  }, [openModal, history])
+
   return (
     <>
       <PageTitle className='contracts__title'>Contracts</PageTitle>
@@ -99,14 +105,14 @@ const Contracts = () => {
       <Modal
         openModal={openModal}
         closeModal={closeModal}
-        modalChildren={() => (
+        modalChildren={
           <DocumentPreviewMiniature
             src={defLogo}
             one={selectedDoc.one}
             two={selectedDoc.two}
             onClick={event => console.log(event)}
           />
-        )}
+        }
         navChildrenFirst={
           <NavLink
             className={history ? activeNav : 'nav__list-item__link active'}
@@ -153,7 +159,7 @@ const Contracts = () => {
                 whoCell='Mark B.'
                 whenCell='19.01.2023 20:31'
                 docNameCell='quartz plant hire...'
-                viewOnClick={console.log('view')}
+                viewOnClick={() => console.log('view')}
               />
             </TableModal>
           ) : (
@@ -166,8 +172,6 @@ const Contracts = () => {
                 type: 'fraction'
               }}
               navigation={true}
-              onSwiper={swiper => console.log(swiper)}
-              onSlideChange={() => console.log('slide change')}
             >
               <SwiperSlide>
                 <img src={contractsDoc} alt={selectedDoc.id} />
@@ -193,13 +197,7 @@ const Contracts = () => {
             </Swiper>
           )
         }
-      >
-        {() => {
-          if (!openModal) {
-            setHistory(false)
-          }
-        }}
-      </Modal>
+      ></Modal>
       <PaginationCustom
         onClickPrev={() => setPage(page - 1)}
         onClickNext={() => setPage(page + 1)}
