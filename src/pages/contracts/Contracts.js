@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import Popup from 'reactjs-popup'
 import { activeNav } from 'helpers/activeNav/activeNav'
 import options from 'helpers/selectOptions/SelectOptions'
 import { A11y, EffectFlip, Navigation, Pagination } from 'swiper'
@@ -38,8 +39,12 @@ const Contracts = () => {
   const [selectedDoc, setSelectedDoc] = useState({})
   const [openModal, setOpenModal] = useState(false)
   const [history, setHistory] = useState(false)
+  const [showHistory, setShowHistory] = useState(false)
 
-  const closeModal = () => setOpenModal(false)
+  const closeModal = () => {
+    setOpenModal(false)
+    setShowHistory(false)
+  }
 
   const totalPages = Math.ceil(ElementsQuantity / PAGE_LIMIT)
 
@@ -147,21 +152,75 @@ const Contracts = () => {
         }
         modalChildrenData={
           history ? (
-            <TableModal
-              firstTableHeaderTitle='#'
-              secondTableHeaderTitle='Who'
-              thirdTableHeaderTitle='When'
-              fourthTableHeaderTitle='Document Name'
-              fifthTableHeaderTitle='View'
-            >
-              <TableModalRow
-                rowNumber='1'
-                whoCell='Mark B.'
-                whenCell='19.01.2023 20:31'
-                docNameCell='quartz plant hire...'
-                viewOnClick={() => console.log('view')}
-              />
-            </TableModal>
+            showHistory ? (
+              <>
+                <Btn onClick={() => setShowHistory(false)}>Back</Btn>
+                <TableModal
+                  style={{ width: '100%' }}
+                  firstTableHeaderTitle='#'
+                  secondTableHeaderTitle='Who'
+                  thirdTableHeaderTitle='When'
+                  fourthTableHeaderTitle='Document Name'
+                  fifthTableHeaderTitle='View'
+                >
+                  <TableModalRow
+                    rowNumber='1'
+                    whoCell='Mark B.'
+                    whenCell='19.01.2023 20:31'
+                    docNameCell='quartz plant hire...'
+                    viewOnClick={() => setShowHistory(false)}
+                  />
+                </TableModal>
+                <Swiper
+                  modules={[Navigation, Pagination, A11y, EffectFlip]}
+                  slidesPerView={1}
+                  effect={'flip'}
+                  grabCursor={true}
+                  pagination={{
+                    type: 'fraction'
+                  }}
+                  navigation={true}
+                >
+                  <SwiperSlide>
+                    <img src={contractsDoc} alt={selectedDoc.id} />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={contractsDoc} alt={selectedDoc.id} />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={contractsDoc} alt={selectedDoc.id} />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={contractsDoc} alt={selectedDoc.id} />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={contractsDoc} alt={selectedDoc.id} />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={contractsDoc} alt={selectedDoc.id} />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img src={contractsDoc} alt={selectedDoc.id} />
+                  </SwiperSlide>
+                </Swiper>
+              </>
+            ) : (
+              <TableModal
+                firstTableHeaderTitle='#'
+                secondTableHeaderTitle='Who'
+                thirdTableHeaderTitle='When'
+                fourthTableHeaderTitle='Document Name'
+                fifthTableHeaderTitle='View'
+              >
+                <TableModalRow
+                  rowNumber='1'
+                  whoCell='Mark B.'
+                  whenCell='19.01.2023 20:31'
+                  docNameCell='quartz plant hire...'
+                  viewOnClick={() => setShowHistory(true)}
+                />
+              </TableModal>
+            )
           ) : (
             <Swiper
               modules={[Navigation, Pagination, A11y, EffectFlip]}
