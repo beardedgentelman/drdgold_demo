@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Popup from 'reactjs-popup'
 import { activeNav } from 'helpers/activeNav/activeNav'
 import options from 'helpers/selectOptions/SelectOptions'
 import { A11y, EffectFlip, Navigation, Pagination } from 'swiper'

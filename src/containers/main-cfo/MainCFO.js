@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Anomalies, Contracts, Dashboard } from 'pages'
+import { Anomalies, Contracts, Dashboard, Reports } from 'pages'
 
 import './../main-user/main.css'
 
@@ -12,7 +12,7 @@ function MainCFO() {
         {/* <Route path='/telematics' element={<Telematics />} /> */}
         <Route path='/anomalies' element={<Anomalies />} />
         {/* <Route path='/projections_simulations' element={<ProjectionsSimulations />} /> */}
-        {/* <Route path='/reports' element={<Reports />} /> */}
+        <Route path='/reports' element={<Reports />} />
       </Routes>
     </main>
   )
