@@ -10,7 +10,7 @@ function MainUser() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/viewDocuments' element={<ViewDocuments />} />
         <Route path='/upload' element={<Upload />} />
-        <Route path='/anomalies' element={<Anomalies />} />
+        <Route path='/anomalies' element={<Anomalies type='user' />} />
         <Route path='/machines' element={<Machines />} />
       </Routes>
     </main>

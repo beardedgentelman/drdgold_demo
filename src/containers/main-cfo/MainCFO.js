@@ -10,7 +10,7 @@ function MainCFO() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/contracts' element={<Contracts />} />
         {/* <Route path='/telematics' element={<Telematics />} /> */}
-        <Route path='/anomalies' element={<Anomalies />} />
+        <Route path='/anomalies' element={<Anomalies type='cfo' />} />
         {/* <Route path='/projections_simulations' element={<ProjectionsSimulations />} /> */}
         <Route path='/reports' element={<Reports />} />
       </Routes>

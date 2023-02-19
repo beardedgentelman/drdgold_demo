@@ -5,15 +5,15 @@ import classNames from 'classnames'
 import 'react-calendar/dist/Calendar.css'
 import './select_option_drop_down.css'
 
-const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => {
+const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar, defaultView }) => {
   const [defaultSelectText, setDefaultSelectText] = useState('')
   const [showOptionList, setShowOptionList] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [isCalendar, setIsCalendar] = useState('')
   const [date, setDate] = useState(new Date())
-  const [view, setView] = useState('year')
+  const [view, setView] = useState(defaultView)
   const [datePicked, setDatePicked] = useState(false)
-  const [selectedMonth, setSelectedMonth] = useState(dateText())
+  const [selectedDate, setSelectedDate] = useState(dateText())
 
   function dateText() {
     if (defaultText.toLowerCase().includes('date')) {
@@ -24,9 +24,42 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
   }
 
   const months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sept', 'Oct', 'Nov', 'Dec']
+  const daysNum = [
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31'
+  ]
 
-  const onClickMonth = () => {
-    setView('year')
+  const onClickDate = () => {
+    setView(defaultView)
   }
 
   useEffect(() => {
@@ -108,7 +141,13 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
       )}
     >
       <div className='selected-text' onClick={handleListDisplay}>
-        {isCalendar === '_calendar' ? (datePicked ? months[selectedMonth] : dateText()) : defaultSelectText}
+        {isCalendar === '_calendar'
+          ? datePicked
+            ? defaultView === 'year'
+              ? months[selectedDate]
+              : daysNum[selectedDate[0] - 1] + ' ' + months[selectedDate[1]]
+            : dateText()
+          : defaultSelectText}
       </div>
 
       {showOptionList &&
@@ -118,12 +157,16 @@ const SelectOptionDropDown = ({ defaultText, optionsList, reset, calendar }) => 
               view={view}
               onChange={setDate}
               value={date}
+              onClickDay={month => {
+                setDatePicked(true)
+                setSelectedDate([[month.getDate()], [month.getMonth()]])
+                onClickDate()
+              }}
               onClickMonth={month => {
                 setDatePicked(true)
-                setSelectedMonth(month.getMonth())
-                onClickMonth()
+                setSelectedDate(month.getMonth())
+                onClickDate()
               }}
-              defaultView='year'
             />
           </div>
         ) : (

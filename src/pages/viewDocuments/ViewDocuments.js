@@ -97,7 +97,13 @@ function ViewDocuments() {
         <SelectOptionDropDown defaultText='Company' optionsList={options[1]} reset={reset} />
         <SelectOptionDropDown defaultText='Machine' optionsList={options[2]} reset={reset} />
         <SelectOptionDropDown defaultText='Foreman' optionsList={options[3]} reset={reset} />
-        <SelectOptionDropDown calendar='_calendar' defaultText='Upload Date' optionsList={options[4]} reset={reset} />
+        <SelectOptionDropDown
+          defaultView='year'
+          calendar='_calendar'
+          defaultText='Upload Date'
+          optionsList={options[4]}
+          reset={reset}
+        />
         <Btn onClick={() => setReset(!reset)}>Reset</Btn>
       </div>
       <div className='view-documentation__documents'>{documents}</div>

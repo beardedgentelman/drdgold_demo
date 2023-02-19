@@ -102,7 +102,13 @@ const Contracts = () => {
       <div className='contracts__selects'>
         <SearchInput placeholder='CONTRACTOR NAME' reset={reset} />
         <SelectOptionDropDown defaultText='HIRE TYPE' optionsList={options[2]} reset={reset} />
-        <SelectOptionDropDown defaultText='DATE STARTED' optionsList={options[4]} reset={reset} />
+        <SelectOptionDropDown
+          calendar='_calendar'
+          defaultView='month'
+          defaultText='DATE STARTED'
+          optionsList={options[4]}
+          reset={reset}
+        />
         <Btn onClick={() => setReset(!reset)}>Reset</Btn>
       </div>
       <div className='contracts__documents'>{documents}</div>
@@ -153,7 +159,6 @@ const Contracts = () => {
           history ? (
             showHistory ? (
               <>
-                <Btn onClick={() => setShowHistory(false)}>Back</Btn>
                 <TableModal
                   style={{ width: '100%' }}
                   firstTableHeaderTitle='#'
@@ -167,7 +172,7 @@ const Contracts = () => {
                     whoCell='Mark B.'
                     whenCell='19.01.2023 20:31'
                     docNameCell='quartz plant hire...'
-                    viewOnClick={() => setShowHistory(false)}
+                    viewOnClick={() => setShowHistory(!showHistory)}
                   />
                 </TableModal>
                 <Swiper

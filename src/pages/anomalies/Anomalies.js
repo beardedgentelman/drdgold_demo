@@ -28,7 +28,7 @@ const svg = (
 
 const somId = ['done', 'warn', 'pend', 'expir', 'info', 'conc']
 
-function Anomalies() {
+const Anomalies = ({ type }) => {
   const [reset, setReset] = useState(false)
   const [page, setPage] = useState(1)
   const [selectedItem, setSelectedItem] = useState({})
@@ -84,7 +84,13 @@ function Anomalies() {
         <SelectOptionDropDown defaultText='SITE' optionsList={options[4]} reset={reset} />
         <SelectOptionDropDown defaultText='Document Type' optionsList={options[0]} reset={reset} />
         <SelectOptionDropDown defaultText='STATUS' optionsList={options[4]} reset={reset} />
-        <SelectOptionDropDown calendar='_calendar' defaultText='Upload Date' optionsList={options[4]} reset={reset} />
+        <SelectOptionDropDown
+          calendar='_calendar'
+          defaultView={type === 'user' ? 'year' : 'month'}
+          defaultText='Upload Date'
+          optionsList={options[4]}
+          reset={reset}
+        />
         <Btn onClick={() => setReset(!reset)}>Reset</Btn>
       </div>
       <div className='anomalies__items'>{items}</div>

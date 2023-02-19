@@ -10,6 +10,10 @@
   cursor: pointer;
 }
 
+.custom-select-container_calendar {
+  min-width: 175px;
+}
+
 .selected-text {
   position: relative;
   width: 100%;
